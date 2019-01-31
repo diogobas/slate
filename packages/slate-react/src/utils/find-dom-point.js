@@ -5,11 +5,12 @@ import findDOMNode from './find-dom-node'
  *
  * @param {Point} point
  * @param {Window} win (optional)
+ * @param {Element} container (optional)
  * @return {Object|Null}
  */
 
-function findDOMPoint(point, win = window) {
-  const el = findDOMNode(point.key, win)
+function findDOMPoint(point, win = window, container = window.document) {
+  const el = findDOMNode(point.key, win, container)
   let start = 0
 
   // For each leaf, we need to isolate its content, which means filtering to its

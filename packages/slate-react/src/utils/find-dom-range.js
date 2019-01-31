@@ -5,13 +5,14 @@ import findDOMPoint from './find-dom-point'
  *
  * @param {Range} range
  * @param {Window} win (optional)
+ * @param {Element} container (optional)
  * @return {Object|Null}
  */
 
-function findDOMRange(range, win = window) {
+function findDOMRange(range, win = window, container = window.document) {
   const { anchor, focus, isBackward, isCollapsed } = range
-  const domAnchor = findDOMPoint(anchor, win)
-  const domFocus = isCollapsed ? domAnchor : findDOMPoint(focus, win)
+  const domAnchor = findDOMPoint(anchor, win, container)
+  const domFocus = isCollapsed ? domAnchor : findDOMPoint(focus, win, container)
 
   if (!domAnchor || !domFocus) return null
 

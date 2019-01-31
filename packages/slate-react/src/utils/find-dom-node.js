@@ -5,15 +5,16 @@ import { Node } from 'slate'
  *
  * @param {String|Node} key
  * @param {Window} win (optional)
+ * @param {Element} container (optional)
  * @return {Element}
  */
 
-function findDOMNode(key, win = window) {
+function findDOMNode(key, win = window, container = window.document) {
   if (Node.isNode(key)) {
     key = key.key
   }
 
-  const el = win.document.querySelector(`[data-key="${key}"]`)
+  const el = container.querySelector(`[data-key="${key}"]`)
 
   if (!el) {
     throw new Error(
